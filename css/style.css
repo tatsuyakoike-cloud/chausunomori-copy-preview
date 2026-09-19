@@ -6,7 +6,7 @@
   --white: #ffffff;
   --black: #111111;
   --line: rgba(255, 255, 255, 0.45);
-  --header-h: 74px;
+  --header-h: 88px;
   --ease: cubic-bezier(0.4, 0.4, 0, 1);
 }
 
@@ -51,28 +51,46 @@ button {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 100;
+  width: 100%;
   height: var(--header-h);
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 28px 0 22px;
+  column-gap: 40px;
+  padding: 0 40px;
   color: var(--white);
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
   transition: background 0.35s var(--ease), color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
 .nav-desktop {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  min-width: 0;
   font-family: var(--serif-jp);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   white-space: nowrap;
+}
+
+.nav-desktop a {
+  position: relative;
+  padding: 10px 26px;
+  line-height: 1.2;
+}
+
+.nav-desktop a + a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 16px;
+  background: currentColor;
+  opacity: 0.42;
 }
 
 .site-header.is-solid {
@@ -89,8 +107,9 @@ button {
 }
 
 .logo img {
-  height: 44px;
+  height: 40px;
   width: auto;
+  max-width: 200px;
 }
 
 .logo-dark {
@@ -108,8 +127,8 @@ button {
 .header-right {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-left: auto;
+  gap: 20px;
+  justify-self: end;
 }
 
 .instagram {
@@ -182,25 +201,32 @@ button {
 
 .hero-copy {
   position: absolute;
-  left: 6vw;
-  bottom: 9vh;
+  left: 7vw;
+  right: 7vw;
+  bottom: 11vh;
   z-index: 2;
+  max-width: 720px;
 }
 
 .hero-copy h1 {
   color: var(--white);
   font-family: var(--serif-jp);
-  font-weight: 500;
-  font-size: clamp(32px, 4.6vw, 68px);
-  letter-spacing: 0.08em;
-  line-height: 1.35;
+  font-weight: 400;
+  font-size: clamp(22px, 2.2vw, 34px);
+  letter-spacing: 0.14em;
+  line-height: 1.8;
+}
+
+.hero-copy h1 .sp-br {
+  display: block;
 }
 
 .hero-copy p {
-  margin-top: 18px;
-  font-size: clamp(14px, 1.2vw, 18px);
-  letter-spacing: 0.18em;
+  margin-top: 16px;
+  font-size: clamp(12px, 0.95vw, 15px);
+  letter-spacing: 0.22em;
   font-weight: 400;
+  line-height: 1.8;
 }
 
 .welcome {
@@ -332,10 +358,10 @@ button {
   font-family: var(--serif-jp);
   color: var(--muted);
   font-weight: 400;
-  font-size: clamp(40px, 7vw, 96px);
-  letter-spacing: 0.12em;
-  line-height: 1.1;
-  padding: 48px 7vw 8px;
+  font-size: clamp(26px, 3vw, 42px);
+  letter-spacing: 0.16em;
+  line-height: 1.45;
+  padding: 72px 7vw 28px;
 }
 
 .cottage {
@@ -526,7 +552,7 @@ button {
 }
 
 .access .section-title {
-  margin-top: -88px;
+  margin-top: -56px;
   position: relative;
   z-index: 2;
 }
@@ -757,7 +783,7 @@ button {
   display: none;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1360px) {
   .nav-desktop,
   .tel,
   .reserve-header,
@@ -848,10 +874,51 @@ button {
     padding-bottom: 52px;
   }
 
+  .news-toast {
+    display: none;
+  }
+
   .hero-copy {
     left: 24px;
     right: 24px;
-    bottom: 8vh;
+    bottom: 12vh;
+    max-width: none;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(20px, 5.4vw, 28px);
+    letter-spacing: 0.12em;
+    line-height: 1.85;
+  }
+
+  .hero-copy h1 .sp-br {
+    display: block;
+  }
+
+  .hero-copy p {
+    margin-top: 14px;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    line-height: 1.9;
+  }
+
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    column-gap: 16px;
+    padding: 0 20px;
+  }
+
+  .logo img {
+    height: 32px;
+    max-width: 150px;
+  }
+
+  .section-title {
+    font-size: clamp(22px, 6vw, 30px);
+    letter-spacing: 0.12em;
+    padding: 56px 24px 20px;
   }
 
   .slider img,
